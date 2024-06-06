@@ -1,0 +1,30 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">
+  {{ currency }}
+</div>
+
+<script type="module">
+    const { createApp } = Vue
+ 
+
+    
+    createApp({
+        data: () => ({
+          currency: []
+        }),
+        methods: {
+            async getCurrency() {
+                const host = 'api.frankfurter.app';
+                fetch(`https://${host}/latest?amount=10&from=BRL&to=USD`)
+                    .then(resp => resp.json())
+                    .then((data) => {
+                       this.currency = data
+                    });             
+            }
+        },
+        created() {
+            this.getCurrency()
+        }
+    }).mount('#app')
+</script>
