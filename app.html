@@ -1,30 +1,52 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<link rel="stylesheet" href="./assets/style.css">
 
 <div id="app">
-  {{ currency }}
+
+    <select id="currency" name="currencylist" form="carform">
+        <option value="dolAmr">Dólar Americano</option>
+        <option value="euro">Euro</option>
+        <option value="btc">Bitcoin</option>
+        <option value="realBrl">Real Brasileiro</option>
+        <option value="dolCad">Dólar Canadense</option>
+        <option value="pesoArg">Peso Argentino</option>
+    </select>
+    <div class="container">
+
+        <div class="card">
+            <p class="card-title">{{ currency[converted].name }}</p>
+            <ul class="card-description">
+                <li>Moeda Base : {{ currency[converted].code }}</li>
+                <li>Moeda Referencia: {{ currency[converted].codein }}</li>
+                <li>Alta da Moeda: {{ currency[converted].high }}</li>
+            </ul>
+        </div>
+
+    </div>
+
 </div>
 
 <script type="module">
     const { createApp } = Vue
- 
 
-    
+    const API_URL = 'https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL';
+
     createApp({
         data: () => ({
-          currency: []
+            currency: null,
+            converted: 'USDBRL'
         }),
         methods: {
             async getCurrency() {
-                const host = 'api.frankfurter.app';
-                fetch(`https://${host}/latest?amount=10&from=BRL&to=USD`)
-                    .then(resp => resp.json())
-                    .then((data) => {
-                       this.currency = data
-                    });             
+                const response = await fetch(API_URL)
+                const data = await response.json()
+
+                this.currency = data
             }
+
         },
-        created() {
-            this.getCurrency()
+        async created() {
+            await this.getCurrency()
         }
     }).mount('#app')
 </script>
