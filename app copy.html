@@ -1,0 +1,42 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<link rel="stylesheet" href="./assets/style.css">
+
+<div id="app">
+
+    <div class="container">
+
+       <card :coffee="gocoffee"></card>
+       
+    </div>
+</div>
+
+<script type="module">
+    const { createApp } = Vue
+
+    import Card from './components/card.js'
+
+    const API_URL = 'http://localhost:3333/gocoffee/';
+
+    createApp({
+        data: () => ({
+            gocoffee: {},
+        }),
+        methods: {
+            async getGocoffee() {
+                //try{
+                    const response = await fetch(API_URL)
+                    const data = await response.json()
+                    this.gocoffee = data
+                }
+                // catch (error) {
+                //     console.error('Erro ao buscar dados da API:', error);
+            
+        },
+        async created() {
+            await this.getGocoffee()
+        },
+        components: {
+            Card
+        }
+    }).mount('#app')
+</script>
