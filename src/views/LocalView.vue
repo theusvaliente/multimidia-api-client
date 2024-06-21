@@ -1,43 +1,36 @@
 <template>
-  <div>
-    <select id="currency" name="currencylist" form="carform">
-      <option value="dolAmr">Dólar Americano</option>
-      <option value="euro">Euro</option>
-      <option value="btc">Bitcoin</option>
-      <option value="realBrl">Real Brasileiro</option>
-      <option value="dolCad">Dólar Canadense</option>
-      <option value="pesoArg">Peso Argentino</option>
-    </select>
-    <div class="container">
-      <card :cambio="currency[converted]"></card>
+      <div class="container">
+      <div v-for="gocoffee in gocoffees" :key="gocoffee.id">
+        <card-local :gocoffee="gocoffee"></card-local>
     </div>
   </div>
 </template>
   
 
 <script>
-import Card from '../components/Card.vue';
+import CardLocal from '@/components/CardLocal.vue';
 
-const API_URL = "https://economia.awesomeapi.com.br/json/last/USD";
+
+const API_URL = "http://localhost:3333/gocoffee";
 
 export default {
   data: () => ({
-    currency: {},
+    gocoffee: {},
     converted: "USDBRL",
   }),
   methods: {
-    async getCurrency() {
+    async getGocoffee() {
       const response = await fetch(API_URL);
       const data = await response.json();
 
-      this.currency = data;
+      this.gocoffee = data;
     },
   },
   created() {
-    this.getCurrency();
+    this.getGocoffee();
   },
   components: {
-    Card,
+    CardLocal,
   },
 };
 </script>

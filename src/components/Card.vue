@@ -1,10 +1,10 @@
 <template>
   <div class="card">
-         <p class="card-title">{{ currency[converted].name }}</p>
+         <p class="card-title">{{ cambio.name }}</p>
          <ul class="card-description">
-             <li>Moeda Base : {{ currency[converted].code }}</li>
-             <li>Moeda Referencia: {{ currency[converted].codein }}</li>
-             <li>Alta da Moeda: {{ currency[converted].high }}</li>
+             <li>Moeda Base: {{ cambio.code }}</li>
+             <li>Moeda Referencia: {{ cambio.codein }}</li>
+             <li>Alta da Moeda: {{ cambio.high }}</li>
     </ul>
      </div>
 </template>
