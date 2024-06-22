@@ -1,10 +1,10 @@
 <template>
   <div class="card">
          <p class="card-title">{{ gocoffee.nome }}</p>
-         <ul class="card-description">
-             <li>Aniversario: {{ gocoffee.aniversario }}</li>
-             <li>CPF: {{ gocoffee.cpf }}</li>
-             <li>Café Preferido: {{ gocoffee.cafepreferido }}</li>
+         <ul>
+             <li class="lista">Aniversario: {{ gocoffee.aniverssario }}</li>
+             <li class="lista">CPF: {{ gocoffee.cpf }}</li>
+             <li class="lista">Café Preferido: {{ gocoffee.cafepreferido }}</li>
     </ul>
      </div>
 </template>
@@ -22,5 +22,7 @@ export default {
 </script>
 
 <style>
-
+    .lista {
+         list-style-type: none
+    }
 </style>

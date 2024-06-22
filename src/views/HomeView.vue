@@ -1,15 +1,15 @@
 <template>
   <div>
     <select id="currency" name="currencylist" form="carform">
-      <option value="dolAmr">Dólar Americano</option>
-      <option value="euro">Euro</option>
-      <option value="btc">Bitcoin</option>
-      <option value="realBrl">Real Brasileiro</option>
-      <option value="dolCad">Dólar Canadense</option>
-      <option value="pesoArg">Peso Argentino</option>
+      <option value="USD">Dólar Americano</option>
+      <option value="EUR">Euro</option>
+      <option value="BTC">Bitcoin</option>
+      <option value="CAD">Dólar Canadense</option>
+      <option value="ARS">Peso Argentino</option>
     </select>
+    
     <div class="container">
-      <card :cambio="currency[converted]"></card>
+      <card :currency="currency" :converted="converted"></card>
     </div>
   </div>
 </template>

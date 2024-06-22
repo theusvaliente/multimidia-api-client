@@ -11,19 +11,20 @@
 import CardLocal from '@/components/CardLocal.vue';
 
 
+
 const API_URL = "http://localhost:3333/gocoffee";
 
 export default {
   data: () => ({
-    gocoffee: {},
-    converted: "USDBRL",
+    gocoffees: [],
+    //converted: "USDBRL",
   }),
   methods: {
     async getGocoffee() {
       const response = await fetch(API_URL);
       const data = await response.json();
 
-      this.gocoffee = data;
+      this.gocoffees = data;
     },
   },
   created() {
@@ -108,9 +109,8 @@ body {
   text-shadow: 1px 1px 5px black;
 }
 
-.card-description {
+/* .card-description {
   font-size: 14px;
   text-align: center;
-  padding-left: 50px;
-}
+} */
 </style>
