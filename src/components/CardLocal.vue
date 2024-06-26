@@ -5,8 +5,8 @@
              <li class="lista">Aniversario: {{ gocoffee.aniverssario }}</li>
              <li class="lista">CPF: {{ gocoffee.cpf }}</li>
              <li class="lista">Café Preferido: {{ gocoffee.cafepreferido }}</li>
-    </ul>
-     </div>
+        </ul>
+  </div>
 </template>
 
 <script>
