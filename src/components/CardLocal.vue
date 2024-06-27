@@ -2,9 +2,9 @@
   <div class="card">
          <p class="card-title">{{ gocoffee.nome }}</p>
          <ul>
-             <li class="lista">Aniversario: {{ gocoffee.aniverssario }}</li>
+             <li class="lista">Aniversario: {{ gocoffee.aniversario }}</li>
              <li class="lista">CPF: {{ gocoffee.cpf }}</li>
-             <li class="lista">Café Preferido: {{ gocoffee.cafepreferido }}</li>
+             <li class="lista">Café Preferido: {{ gocoffee.cafe_preferido }}</li>
         </ul>
   </div>
 </template>
